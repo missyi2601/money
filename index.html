@@ -162,6 +162,16 @@ select.month-select{
   display:flex;justify-content:space-between;font-size:0.74rem;color:var(--medium);
   margin:2px 2px 14px;font-weight:700;
 }
+.collapsible-toggle{
+  width:100%;display:flex;align-items:center;justify-content:space-between;
+  background:none;border:none;padding:22px 2px 10px;margin:0;cursor:pointer;
+  font-family:inherit;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;color:var(--medium);
+  text-transform:uppercase;
+}
+.collapsible-arrow{font-size:0.7rem;color:var(--pink);transition:transform .2s ease;}
+.collapsible-arrow.collapsed{transform:rotate(180deg);}
+#list-detail-content{overflow:hidden;max-height:4000px;transition:max-height .25s ease;}
+#list-detail-content.collapsed{max-height:0;}
 
 /* ---------- Balance page ---------- */
 .month-nav{
@@ -388,21 +398,6 @@ input[type=file]{display:none;}
         <div class="hero-sub">總入帳 <span id="balance-alltime-income">0</span> － 總花費 <span id="balance-alltime-expense">0</span></div>
       </div>
 
-      <div class="section-title">搜尋與篩選</div>
-      <div class="search-box">
-        <span>🔍</span>
-        <input type="text" id="search-input" placeholder="搜尋類別或備註…">
-      </div>
-      <div class="filter-row">
-        <button class="chip active" data-filter-type="all">全部</button>
-        <button class="chip" data-filter-type="expense">花費</button>
-        <button class="chip" data-filter-type="income">入帳</button>
-        <select class="month-select" id="filter-month"></select>
-        <select class="month-select" id="filter-card"></select>
-      </div>
-      <div class="list-summary" id="list-summary"></div>
-      <div id="transaction-list"></div>
-
       <div class="section-title">分類佔比</div>
       <div class="month-nav">
         <button id="bd-prev">‹</button>
@@ -421,6 +416,28 @@ input[type=file]{display:none;}
       <div class="section-title">近 6 個月結餘趨勢</div>
       <div class="breakdown-card" style="padding-top:16px;">
         <div id="month-trend"></div>
+      </div>
+
+      <div class="section-title">搜尋與篩選</div>
+      <div class="search-box">
+        <span>🔍</span>
+        <input type="text" id="search-input" placeholder="搜尋類別或備註…">
+      </div>
+      <div class="filter-row">
+        <button class="chip active" data-filter-type="all">全部</button>
+        <button class="chip" data-filter-type="expense">花費</button>
+        <button class="chip" data-filter-type="income">入帳</button>
+        <select class="month-select" id="filter-month"></select>
+        <select class="month-select" id="filter-card"></select>
+      </div>
+
+      <button class="collapsible-toggle" id="list-toggle" type="button">
+        <span>單筆紀錄</span>
+        <span class="collapsible-arrow" id="list-toggle-icon">︿</span>
+      </button>
+      <div id="list-detail-content">
+        <div class="list-summary" id="list-summary"></div>
+        <div id="transaction-list"></div>
       </div>
     </section>
 
@@ -549,10 +566,10 @@ input[type=file]{display:none;}
 /* ---------------- Data layer ---------------- */
 const STORAGE_KEY = "abundance_ledger_v1";
 const CARDS_STORAGE_KEY = "abundance_ledger_cards_v1";
-const EXPENSE_CATEGORIES = ["日用品","餐飲","交通","娛樂","醫療","學習","居家","財務釋放"];
+const EXPENSE_CATEGORIES = ["日用品","餐飲","交通","娛樂","醫療","學習","居家","約會","財務釋放"];
 const INCOME_CATEGORIES = ["薪水","獎金","副業收入","投資","禮金","其他"];
 const CATEGORY_EMOJI = {
-  "日用品":"🧻","餐飲":"🍜","交通":"🚗","娛樂":"🎬","醫療":"💊","學習":"📚","居家":"🏠","財務釋放":"🕊️",
+  "日用品":"🧻","餐飲":"🍜","交通":"🚗","娛樂":"🎬","醫療":"💊","學習":"📚","居家":"🏠","約會":"💕","財務釋放":"🕊️",
   "薪水":"💼","獎金":"🎁","副業收入":"💻","投資":"📈","禮金":"🧧",
   "其他":"📦"
 };
@@ -774,6 +791,16 @@ const cardFilterSelect = document.getElementById("filter-card");
 searchInput.addEventListener("input", renderList);
 monthSelect.addEventListener("change", renderList);
 cardFilterSelect.addEventListener("change", renderList);
+
+const listToggle = document.getElementById("list-toggle");
+const listToggleIcon = document.getElementById("list-toggle-icon");
+const listDetailContent = document.getElementById("list-detail-content");
+let listCollapsed = false;
+listToggle.addEventListener("click", ()=>{
+  listCollapsed = !listCollapsed;
+  listDetailContent.classList.toggle("collapsed", listCollapsed);
+  listToggleIcon.classList.toggle("collapsed", listCollapsed);
+});
 document.querySelectorAll(".filter-row .chip").forEach(chip=>{
   chip.addEventListener("click", ()=>{
     document.querySelectorAll(".filter-row .chip").forEach(c=>c.classList.remove("active"));
