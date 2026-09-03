@@ -58,10 +58,10 @@ body{
 }
 .nav-btn{
   background:none;border:none;display:flex;flex-direction:column;align-items:center;gap:3px;
-  color:var(--gray);font-family:inherit;font-size:0.66rem;font-weight:700;
-  padding:4px 8px;cursor:pointer;flex:1;
+  color:var(--gray);font-family:inherit;font-size:0.6rem;font-weight:700;
+  padding:4px 4px;cursor:pointer;flex:1;
 }
-.nav-btn svg{width:21px;height:21px;}
+.nav-btn svg{width:19px;height:19px;}
 .nav-btn.active{color:var(--pink);}
 
 /* ---------- Layout ---------- */
@@ -95,24 +95,32 @@ main{padding:4px 20px 28px;}
 .hero-sub{font-size:0.78rem;color:var(--medium);position:relative;}
 
 .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;}
+.stat-grid-3{grid-template-columns:repeat(3,1fr);}
 .stat-card{
   background:#fff;border-radius:var(--radius-sm);padding:14px 16px;box-shadow:var(--shadow);
 }
 .stat-card.expense{background:var(--light-pink);}
 .stat-card.income{background:var(--light-sage);}
+.stat-card.company{background:var(--light-blue);}
 .stat-label{font-size:0.68rem;font-weight:700;color:var(--medium);letter-spacing:0.03em;}
 .stat-value{font-size:1.28rem;font-weight:800;margin-top:4px;font-variant-numeric:tabular-nums;}
 .stat-card.expense .stat-value{color:var(--pink);}
 .stat-card.income .stat-value{color:var(--sage);}
+.stat-card.company .stat-value{color:var(--blue);}
+.stat-grid-3 .stat-label{font-size:0.62rem;}
+.stat-grid-3 .stat-value{font-size:1.05rem;}
 
 /* quick add */
 .quick-add{display:flex;gap:12px;margin-top:16px;}
+.quick-add-3{gap:8px;}
 .quick-btn{
   flex:1;border:none;border-radius:var(--radius-sm);padding:13px 0;font-family:inherit;
   font-weight:700;font-size:0.85rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;
 }
+.quick-add-3 .quick-btn{font-size:0.76rem;padding:12px 2px;}
 .quick-btn.expense{background:var(--pink);color:#fff;}
 .quick-btn.income{background:var(--sage);color:#fff;}
+.quick-btn.company{background:var(--blue);color:#fff;}
 
 /* recent list */
 .tx-row{
@@ -125,12 +133,14 @@ main{padding:4px 20px 28px;}
 }
 .tx-row.expense .tx-icon{background:var(--light-pink);color:var(--pink);}
 .tx-row.income .tx-icon{background:var(--light-sage);color:var(--sage);}
+.tx-row.company .tx-icon{background:var(--light-blue);color:var(--blue);}
 .tx-info{flex:1;min-width:0;}
 .tx-cat{font-size:0.88rem;font-weight:700;}
 .tx-meta{font-size:0.72rem;color:var(--gray);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .tx-amount{font-size:0.95rem;font-weight:800;font-variant-numeric:tabular-nums;flex-shrink:0;}
 .tx-row.expense .tx-amount{color:var(--pink);}
 .tx-row.income .tx-amount{color:var(--sage);}
+.tx-row.company .tx-amount{color:var(--blue);}
 .tx-delete{
   border:none;background:none;color:var(--gray);font-size:1rem;padding:4px 2px;cursor:pointer;flex-shrink:0;
 }
@@ -228,6 +238,37 @@ select.month-select{
   display:flex;align-items:center;justify-content:space-between;
 }
 .cash-tile-label{font-weight:700;font-size:0.88rem;color:var(--dark);}
+
+/* ---------- Savings goal card ---------- */
+.goal-card{
+  background:linear-gradient(150deg,var(--light-sage) 0%, var(--gold-light) 70%);
+  border-radius:var(--radius);padding:18px 18px 20px;box-shadow:var(--shadow);
+}
+.goal-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;}
+.goal-name{font-weight:800;font-size:0.98rem;color:var(--dark);}
+.goal-edit-btn{border:none;background:none;color:var(--medium);font-size:0.9rem;cursor:pointer;padding:2px 4px;flex-shrink:0;}
+.goal-amounts{display:flex;align-items:baseline;gap:6px;margin-top:10px;}
+.goal-saved{font-size:1.5rem;font-weight:800;color:var(--dark);font-variant-numeric:tabular-nums;}
+.goal-target{font-size:0.82rem;color:var(--gray);font-weight:700;}
+.goal-progress-track{height:10px;background:#ffffffaa;border-radius:999px;overflow:hidden;margin-top:12px;}
+.goal-progress-fill{height:100%;background:var(--sage);border-radius:999px;transition:width .3s ease;}
+.goal-progress-fill.over{background:var(--gold);}
+.goal-progress-text{font-size:0.72rem;font-weight:700;color:var(--medium);margin-top:6px;}
+.goal-btn-row{display:flex;gap:10px;margin-top:16px;}
+.goal-btn{
+  flex:1;border:none;border-radius:999px;padding:11px 0;font-family:inherit;font-weight:700;
+  font-size:0.82rem;cursor:pointer;
+}
+.goal-btn.deposit{background:var(--sage);color:#fff;}
+.goal-btn.withdraw{background:#fff;color:var(--medium);border:1.5px solid var(--soft-pink);}
+.goal-history{margin-top:14px;}
+.goal-history-row{
+  display:flex;justify-content:space-between;align-items:center;padding:8px 2px;font-size:0.76rem;
+  border-top:1px solid #ffffff88;color:var(--medium);cursor:pointer;
+}
+.goal-history-amt{font-weight:800;}
+.goal-history-amt.deposit{color:var(--sage);}
+.goal-history-amt.withdraw{color:var(--pink);}
 .cash-tile-val{font-weight:800;font-size:1.05rem;color:var(--sage);font-variant-numeric:tabular-nums;}
 
 /* ---------- RAS page ---------- */
@@ -267,6 +308,8 @@ select.month-select{
 }
 .type-btn.sel-expense{background:var(--pink);border-color:var(--pink);color:#fff;}
 .type-btn.sel-income{background:var(--sage);border-color:var(--sage);color:#fff;}
+.type-btn.sel-company{background:var(--blue);border-color:var(--blue);color:#fff;}
+.type-toggle-3 .type-btn{font-size:0.8rem;padding:12px 2px;}
 .field{margin-bottom:14px;}
 .field label{display:block;font-size:0.72rem;font-weight:700;color:var(--medium);margin-bottom:6px;}
 .field input, .field select{
@@ -276,7 +319,24 @@ select.month-select{
 .field input:focus, .field select:focus{border-color:var(--pink);}
 .amount-field{position:relative;}
 .amount-field .cur-prefix{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--gray);font-weight:700;font-size:0.92rem;pointer-events:none;}
-.amount-field input{padding-left:52px;font-weight:800;font-size:1.1rem;}
+.amount-field input{padding-left:52px;padding-right:48px;font-weight:800;font-size:1.1rem;}
+.calc-toggle-btn{
+  position:absolute;right:6px;top:50%;transform:translateY(-50%);
+  border:none;background:var(--light-pink);color:var(--pink);width:34px;height:34px;border-radius:10px;
+  font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;
+}
+.calc-preview{
+  font-size:0.8rem;font-weight:800;color:var(--gold);min-height:18px;margin:-8px 2px 12px;
+}
+.calc-pad{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:-2px 0 16px;}
+.calc-pad.hidden{display:none;}
+.calc-pad button{
+  border:1.5px solid var(--light-pink);background:#fff;border-radius:10px;padding:13px 0;
+  font-family:inherit;font-weight:700;font-size:1.02rem;color:var(--dark);cursor:pointer;
+}
+.calc-pad button.op{background:var(--light-pink);color:var(--pink);border-color:var(--light-pink);}
+.calc-pad button.clear{background:var(--light-pink);color:var(--danger);border-color:var(--light-pink);}
+.calc-pad button.eq{background:var(--dark);color:#fff;border-color:var(--dark);grid-column:1 / -1;}
 .modal-actions{display:flex;gap:10px;margin-top:18px;}
 .btn{
   flex:1;border:none;border-radius:999px;padding:14px 0;font-family:inherit;font-weight:700;font-size:0.92rem;cursor:pointer;
@@ -355,6 +415,10 @@ input[type=file]{display:none;}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5.5" width="19" height="13" rx="2.2"/><path d="M2.5 9.5h19"/><path d="M6 14.5h4"/></svg>
       信用卡
     </button>
+    <button class="nav-btn" data-page="custody">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M4.5 8.5l2 1.7M17.5 13.8l2 1.7M19.5 8.5l-2 1.7M6.5 13.8l-2 1.7"/><circle cx="12" cy="12" r="4.2"/></svg>
+      代管
+    </button>
     <button class="nav-btn" data-page="ras">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z"/></svg>
       顯化
@@ -385,6 +449,9 @@ input[type=file]{display:none;}
         <button class="quick-btn expense" id="quick-expense">＋ 記一筆花費</button>
         <button class="quick-btn income" id="quick-income">＋ 記一筆入帳</button>
       </div>
+
+      <div class="section-title">存錢／還款計畫</div>
+      <div id="savings-goal-section"></div>
 
       <div class="section-title">最近紀錄</div>
       <div id="home-recent-list"></div>
@@ -468,6 +535,39 @@ input[type=file]{display:none;}
       <div id="cards-list"></div>
     </section>
 
+    <!-- ============ CUSTODY ============ -->
+    <section class="page" id="page-custody">
+      <div class="hero-card">
+        <div class="hero-label">代管餘額</div>
+        <div class="hero-amount"><span class="cur">NT$</span><span id="custody-balance">0</span></div>
+        <div class="hero-sub" id="custody-balance-sub">目前手上還握著多少案主的錢</div>
+      </div>
+
+      <div class="stat-grid stat-grid-3">
+        <div class="stat-card income">
+          <div class="stat-label">總收款</div>
+          <div class="stat-value">$<span id="custody-total-collect">0</span></div>
+        </div>
+        <div class="stat-card expense">
+          <div class="stat-label">撥給案主</div>
+          <div class="stat-value">$<span id="custody-total-client">0</span></div>
+        </div>
+        <div class="stat-card company">
+          <div class="stat-label">撥給公司</div>
+          <div class="stat-value">$<span id="custody-total-company">0</span></div>
+        </div>
+      </div>
+
+      <div class="quick-add quick-add-3">
+        <button class="quick-btn income" id="custody-add-collect">＋ 收款</button>
+        <button class="quick-btn expense" id="custody-add-client">＋ 給案主</button>
+        <button class="quick-btn company" id="custody-add-company">＋ 給公司</button>
+      </div>
+
+      <div class="section-title">代管紀錄</div>
+      <div id="custody-list"></div>
+    </section>
+
     <!-- ============ RAS ============ -->
     <section class="page" id="page-ras">
       <div class="ras-intro">
@@ -497,7 +597,28 @@ input[type=file]{display:none;}
       <div class="field amount-field">
         <label>金額</label>
         <span class="cur-prefix">NT$</span>
-        <input type="number" id="entry-amount" inputmode="decimal" min="0" step="1" placeholder="0" required>
+        <input type="text" id="entry-amount" inputmode="decimal" placeholder="0，也可輸入 120+45" required>
+        <button type="button" class="calc-toggle-btn" id="calc-toggle-btn" title="開啟計算機">🧮</button>
+      </div>
+      <div class="calc-preview" id="calc-preview"></div>
+      <div class="calc-pad hidden" id="calc-pad">
+        <button type="button" data-k="7">7</button>
+        <button type="button" data-k="8">8</button>
+        <button type="button" data-k="9">9</button>
+        <button type="button" class="op" data-k="/">÷</button>
+        <button type="button" data-k="4">4</button>
+        <button type="button" data-k="5">5</button>
+        <button type="button" data-k="6">6</button>
+        <button type="button" class="op" data-k="*">×</button>
+        <button type="button" data-k="1">1</button>
+        <button type="button" data-k="2">2</button>
+        <button type="button" data-k="3">3</button>
+        <button type="button" class="op" data-k="-">－</button>
+        <button type="button" class="clear" data-k="clear">C</button>
+        <button type="button" data-k="0">0</button>
+        <button type="button" data-k="back">⌫</button>
+        <button type="button" class="op" data-k="+">＋</button>
+        <button type="button" class="eq" data-k="=">＝</button>
       </div>
       <div class="field">
         <label>類別</label>
@@ -518,6 +639,94 @@ input[type=file]{display:none;}
       <div class="modal-actions">
         <button type="button" class="btn btn-ghost" id="btn-cancel">取消</button>
         <button type="button" class="btn btn-danger hidden" id="btn-delete">刪除</button>
+        <button type="submit" class="btn btn-primary">儲存</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ============ Custody Modal ============ -->
+<div class="modal-overlay hidden" id="custody-modal-overlay">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-title" id="custody-modal-title">新增代管紀錄</div>
+    <form id="custody-form">
+      <input type="hidden" id="custody-id">
+      <div class="type-toggle type-toggle-3">
+        <button type="button" class="type-btn" id="custody-type-collect" data-type="collect">💰 收款</button>
+        <button type="button" class="type-btn" id="custody-type-client" data-type="to_client">🧑 給案主</button>
+        <button type="button" class="type-btn" id="custody-type-company" data-type="to_company">🏢 給公司</button>
+      </div>
+      <div class="field amount-field">
+        <label>金額</label>
+        <span class="cur-prefix">NT$</span>
+        <input type="text" id="custody-amount" inputmode="decimal" placeholder="0，也可輸入 120+45" required>
+      </div>
+      <div class="field">
+        <label>日期</label>
+        <input type="date" id="custody-date" required>
+      </div>
+      <div class="field">
+        <label>備註（選填，例如案號）</label>
+        <input type="text" id="custody-note" placeholder="例如：案主A 3月自付額">
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" id="custody-btn-cancel">取消</button>
+        <button type="button" class="btn btn-danger hidden" id="custody-btn-delete">刪除</button>
+        <button type="submit" class="btn btn-primary">儲存</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ============ Goal Setup Modal ============ -->
+<div class="modal-overlay hidden" id="goal-setup-modal-overlay">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-title" id="goal-setup-title">設定存錢／還款目標</div>
+    <form id="goal-setup-form">
+      <div class="field">
+        <label>目標名稱</label>
+        <input type="text" id="goal-name-input" placeholder="例如：還清信用卡卡費" required>
+      </div>
+      <div class="field amount-field">
+        <label>目標金額</label>
+        <span class="cur-prefix">NT$</span>
+        <input type="text" id="goal-target-input" inputmode="decimal" placeholder="0" required>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" id="goal-setup-cancel">取消</button>
+        <button type="button" class="btn btn-danger hidden" id="goal-setup-delete">刪除目標</button>
+        <button type="submit" class="btn btn-primary">儲存</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ============ Goal Transaction Modal ============ -->
+<div class="modal-overlay hidden" id="goal-tx-modal-overlay">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-title" id="goal-tx-title">存入</div>
+    <form id="goal-tx-form">
+      <input type="hidden" id="goal-tx-id">
+      <input type="hidden" id="goal-tx-type">
+      <div class="field amount-field">
+        <label>金額</label>
+        <span class="cur-prefix">NT$</span>
+        <input type="text" id="goal-tx-amount" inputmode="decimal" placeholder="0，也可輸入 120+45" required>
+      </div>
+      <div class="field">
+        <label>日期</label>
+        <input type="date" id="goal-tx-date" required>
+      </div>
+      <div class="field">
+        <label>備註（選填）</label>
+        <input type="text" id="goal-tx-note" placeholder="例如：這個月多存的獎金">
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" id="goal-tx-cancel">取消</button>
+        <button type="button" class="btn btn-danger hidden" id="goal-tx-delete">刪除</button>
         <button type="submit" class="btn btn-primary">儲存</button>
       </div>
     </form>
@@ -576,6 +785,67 @@ const CATEGORY_EMOJI = {
 function catEmoji(cat){ return CATEGORY_EMOJI[cat] || "📦"; }
 const CARD_COLORS = ["#C9938A","#7A9BAD","#9AAE9B","#B8925A","#5A5248","#C97A6D"];
 
+/* 安全的四則運算計算機（不使用 eval），支援 + - * / 與括號 */
+function safeCalc(expr){
+  if(expr==null) return null;
+  const clean = String(expr).replace(/[^0-9+\-*/(). ]/g, "");
+  if(!clean.trim()) return null;
+  let pos = 0;
+  function skipSpace(){ while(clean[pos]===" ") pos++; }
+  function parseNumber(){
+    skipSpace();
+    const start = pos;
+    if(clean[pos]==="-") pos++;
+    let dotUsed = false;
+    while(pos<clean.length && (/[0-9]/.test(clean[pos]) || (clean[pos]==="." && !dotUsed))){
+      if(clean[pos]===".") dotUsed = true;
+      pos++;
+    }
+    if(pos===start || (pos===start+1 && clean[start]==="-")) throw new Error("bad number");
+    return parseFloat(clean.slice(start,pos));
+  }
+  function parseFactor(){
+    skipSpace();
+    if(clean[pos]==="("){
+      pos++;
+      const v = parseExpr();
+      skipSpace();
+      if(clean[pos]===")") pos++;
+      return v;
+    }
+    return parseNumber();
+  }
+  function parseTerm(){
+    let v = parseFactor();
+    skipSpace();
+    while(clean[pos]==="*" || clean[pos]==="/"){
+      const op = clean[pos]; pos++;
+      const rhs = parseFactor();
+      v = op==="*" ? v*rhs : v/rhs;
+      skipSpace();
+    }
+    return v;
+  }
+  function parseExpr(){
+    let v = parseTerm();
+    skipSpace();
+    while(clean[pos]==="+" || clean[pos]==="-"){
+      const op = clean[pos]; pos++;
+      const rhs = parseTerm();
+      v = op==="+" ? v+rhs : v-rhs;
+      skipSpace();
+    }
+    return v;
+  }
+  try{
+    const result = parseExpr();
+    skipSpace();
+    if(pos!==clean.length) return null;
+    if(isNaN(result) || !isFinite(result)) return null;
+    return result;
+  }catch(e){ return null; }
+}
+
 function loadData(){
   try{
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -605,6 +875,39 @@ function saveCards(){
 let cards = loadCards();
 function cardById(id){ return cards.find(c=>c.id===id); }
 
+/* 代管款項：完全獨立於個人花費/入帳，不計入首頁餘額與統計 */
+const CUSTODY_STORAGE_KEY = "abundance_ledger_custody_v1";
+function loadCustody(){
+  try{
+    const raw = localStorage.getItem(CUSTODY_STORAGE_KEY);
+    return raw ? JSON.parse(raw) : [];
+  }catch(e){ return []; }
+}
+function saveCustody(){
+  localStorage.setItem(CUSTODY_STORAGE_KEY, JSON.stringify(custodyRecords));
+}
+let custodyRecords = loadCustody();
+
+/* 存錢／還款目標：存入的金額會從「剩餘可用餘額」扣除，變成真正圈起來的錢 */
+const GOAL_STORAGE_KEY = "abundance_ledger_goal_v1";
+function loadGoal(){
+  try{
+    const raw = localStorage.getItem(GOAL_STORAGE_KEY);
+    return raw ? JSON.parse(raw) : null;
+  }catch(e){ return null; }
+}
+function saveGoal(){
+  if(goal) localStorage.setItem(GOAL_STORAGE_KEY, JSON.stringify(goal));
+  else localStorage.removeItem(GOAL_STORAGE_KEY);
+}
+let goal = loadGoal();
+function goalSavedAmount(){
+  if(!goal || !Array.isArray(goal.history)) return 0;
+  let total = 0;
+  goal.history.forEach(h=>{ total += h.type==="deposit" ? h.amount : -h.amount; });
+  return total;
+}
+
 function uid(){
   return "t" + Date.now().toString(36) + Math.random().toString(36).slice(2,8);
 }
@@ -624,6 +927,7 @@ function goPage(name){
   if(name==="home") renderHome();
   if(name==="list"){ renderList(); renderBalance(); }
   if(name==="cards") renderCards();
+  if(name==="custody") renderCustody();
   if(name==="ras") renderRas();
 }
 navBtns.forEach(b=> b.addEventListener("click", ()=> goPage(b.dataset.page)));
@@ -652,7 +956,45 @@ const typeBtnIncome = document.getElementById("type-btn-income");
 const btnDelete = document.getElementById("btn-delete");
 const entryCardField = document.getElementById("entry-card-field");
 const entryCard = document.getElementById("entry-card");
+const calcToggleBtn = document.getElementById("calc-toggle-btn");
+const calcPad = document.getElementById("calc-pad");
+const calcPreview = document.getElementById("calc-preview");
 let currentType = "expense";
+
+function updateCalcPreview(){
+  const val = entryAmount.value;
+  if(/[+\-*/]/.test(val)){
+    const result = safeCalc(val);
+    calcPreview.textContent = result!==null ? ("= NT$ " + fmt(result)) : "算式看起來怪怪的";
+  }else{
+    calcPreview.textContent = "";
+  }
+}
+entryAmount.addEventListener("input", updateCalcPreview);
+
+calcToggleBtn.addEventListener("click", ()=> calcPad.classList.toggle("hidden"));
+
+calcPad.addEventListener("click", (e)=>{
+  const btn = e.target.closest("button[data-k]");
+  if(!btn) return;
+  const k = btn.dataset.k;
+  if(k==="clear"){
+    entryAmount.value = "";
+  }else if(k==="back"){
+    entryAmount.value = entryAmount.value.slice(0,-1);
+  }else if(k==="="){
+    const result = safeCalc(entryAmount.value);
+    if(result!==null){
+      entryAmount.value = (Math.round(result*100)/100).toString();
+    }else{
+      toast("算式看起來怪怪的，請確認一下");
+    }
+  }else{
+    entryAmount.value += k;
+  }
+  updateCalcPreview();
+  entryAmount.focus();
+});
 
 function populateEntryCardSelect(){
   entryCard.innerHTML = `<option value="">💵 現金 / 其他</option>` +
@@ -673,6 +1015,8 @@ typeBtnIncome.addEventListener("click", ()=> setType("income"));
 
 function openModal(mode, tx){
   entryForm.reset();
+  calcPad.classList.add("hidden");
+  calcPreview.textContent = "";
   if(mode==="edit" && tx){
     modalTitle.textContent = "編輯紀錄";
     entryId.value = tx.id;
@@ -701,7 +1045,7 @@ document.getElementById("quick-income").addEventListener("click", ()=> openModal
 
 entryForm.addEventListener("submit", function(e){
   e.preventDefault();
-  const amt = parseFloat(entryAmount.value);
+  const amt = safeCalc(entryAmount.value);
   if(!amt || amt <= 0){ toast("請輸入正確金額"); return; }
   const data = {
     id: entryId.value || uid(),
@@ -743,9 +1087,14 @@ function renderHome(){
     if(t.type==="income"){ totalIncome+=t.amount; if(ymOf(t.date)===nowYm) monthIncome+=t.amount; }
     else { totalExpense+=t.amount; if(ymOf(t.date)===nowYm) monthExpense+=t.amount; }
   });
-  document.getElementById("home-balance").textContent = fmt(totalIncome-totalExpense);
+  const gSaved = goalSavedAmount();
+  document.getElementById("home-balance").textContent = fmt(totalIncome-totalExpense-gSaved);
+  document.getElementById("home-balance-sub").textContent =
+    gSaved>0 ? `總收入 - 總花費 - 已圈存 $${fmt(gSaved)}` : "目前總收入 - 總花費";
   document.getElementById("home-month-expense").textContent = fmt(monthExpense);
   document.getElementById("home-month-income").textContent = fmt(monthIncome);
+
+  renderSavingsCard();
 
   const recent = [...transactions].sort((a,b)=> (b.date+b.id).localeCompare(a.date+a.id)).slice(0,6);
   const list = document.getElementById("home-recent-list");
@@ -895,9 +1244,10 @@ document.getElementById("bd-next").addEventListener("click", ()=>{
 function renderBalance(){
   let totalIncome=0, totalExpense=0;
   transactions.forEach(t=> t.type==="income" ? totalIncome+=t.amount : totalExpense+=t.amount);
-  document.getElementById("balance-alltime").textContent = fmt(totalIncome-totalExpense);
+  const gSaved = goalSavedAmount();
+  document.getElementById("balance-alltime").textContent = fmt(totalIncome-totalExpense-gSaved);
   document.getElementById("balance-alltime-income").textContent = "$"+fmt(totalIncome);
-  document.getElementById("balance-alltime-expense").textContent = "$"+fmt(totalExpense);
+  document.getElementById("balance-alltime-expense").textContent = "$"+fmt(totalExpense) + (gSaved>0 ? ` (另圈存 $${fmt(gSaved)})` : "");
 
   const ym = breakdownDate.getFullYear()+"-"+String(breakdownDate.getMonth()+1).padStart(2,"0");
   document.getElementById("bd-month-label").textContent = breakdownDate.getFullYear()+" 年 "+(breakdownDate.getMonth()+1)+" 月";
@@ -1065,6 +1415,312 @@ function renderCards(){
   });
 }
 
+/* ---------------- CUSTODY PAGE ---------------- */
+const CUSTODY_META = {
+  collect:    { label:"收自付額",   cls:"income",  icon:"💰", sign:"+" },
+  to_client:  { label:"撥給案主",   cls:"expense", icon:"🧑", sign:"－" },
+  to_company: { label:"撥給公司",   cls:"company", icon:"🏢", sign:"－" }
+};
+const custodyModalOverlay = document.getElementById("custody-modal-overlay");
+const custodyModalTitle = document.getElementById("custody-modal-title");
+const custodyForm = document.getElementById("custody-form");
+const custodyIdInput = document.getElementById("custody-id");
+const custodyAmountInput = document.getElementById("custody-amount");
+const custodyDateInput = document.getElementById("custody-date");
+const custodyNoteInput = document.getElementById("custody-note");
+const custodyTypeCollectBtn = document.getElementById("custody-type-collect");
+const custodyTypeClientBtn = document.getElementById("custody-type-client");
+const custodyTypeCompanyBtn = document.getElementById("custody-type-company");
+const custodyBtnDelete = document.getElementById("custody-btn-delete");
+let custodyCurrentType = "collect";
+
+function setCustodyType(type){
+  custodyCurrentType = type;
+  custodyTypeCollectBtn.classList.toggle("sel-income", type==="collect");
+  custodyTypeClientBtn.classList.toggle("sel-expense", type==="to_client");
+  custodyTypeCompanyBtn.classList.toggle("sel-company", type==="to_company");
+}
+custodyTypeCollectBtn.addEventListener("click", ()=> setCustodyType("collect"));
+custodyTypeClientBtn.addEventListener("click", ()=> setCustodyType("to_client"));
+custodyTypeCompanyBtn.addEventListener("click", ()=> setCustodyType("to_company"));
+
+function openCustodyModal(mode, rec){
+  custodyForm.reset();
+  if(mode==="edit" && rec){
+    custodyModalTitle.textContent = "編輯代管紀錄";
+    custodyIdInput.value = rec.id;
+    setCustodyType(rec.type);
+    custodyAmountInput.value = rec.amount;
+    custodyDateInput.value = rec.date;
+    custodyNoteInput.value = rec.note || "";
+    custodyBtnDelete.classList.remove("hidden");
+  }else{
+    custodyModalTitle.textContent = "新增代管紀錄";
+    custodyIdInput.value = "";
+    setCustodyType(CUSTODY_META[mode] ? mode : "collect");
+    custodyDateInput.value = todayStr();
+    custodyBtnDelete.classList.add("hidden");
+  }
+  custodyModalOverlay.classList.remove("hidden");
+}
+function closeCustodyModal(){ custodyModalOverlay.classList.add("hidden"); }
+document.getElementById("custody-btn-cancel").addEventListener("click", closeCustodyModal);
+custodyModalOverlay.addEventListener("click", (e)=>{ if(e.target===custodyModalOverlay) closeCustodyModal(); });
+
+document.getElementById("custody-add-collect").addEventListener("click", ()=> openCustodyModal("collect"));
+document.getElementById("custody-add-client").addEventListener("click", ()=> openCustodyModal("to_client"));
+document.getElementById("custody-add-company").addEventListener("click", ()=> openCustodyModal("to_company"));
+
+custodyForm.addEventListener("submit", function(e){
+  e.preventDefault();
+  const amt = safeCalc(custodyAmountInput.value);
+  if(!amt || amt <= 0){ toast("請輸入正確金額"); return; }
+  const data = {
+    id: custodyIdInput.value || uid(),
+    type: custodyCurrentType,
+    amount: amt,
+    date: custodyDateInput.value || todayStr(),
+    note: custodyNoteInput.value.trim()
+  };
+  const idx = custodyRecords.findIndex(r=>r.id===data.id);
+  if(idx>=0) custodyRecords[idx] = data; else custodyRecords.push(data);
+  saveCustody();
+  closeCustodyModal();
+  toast(idx>=0 ? "已更新紀錄" : "已新增紀錄");
+  renderCustody();
+});
+
+custodyBtnDelete.addEventListener("click", function(){
+  if(!custodyIdInput.value) return;
+  if(!confirm("確定要刪除這筆代管紀錄嗎？")) return;
+  custodyRecords = custodyRecords.filter(r=>r.id!==custodyIdInput.value);
+  saveCustody();
+  closeCustodyModal();
+  toast("已刪除紀錄");
+  renderCustody();
+});
+
+function renderCustody(){
+  let totalCollect=0, totalClient=0, totalCompany=0;
+  custodyRecords.forEach(r=>{
+    if(r.type==="collect") totalCollect+=r.amount;
+    else if(r.type==="to_client") totalClient+=r.amount;
+    else if(r.type==="to_company") totalCompany+=r.amount;
+  });
+  const balance = totalCollect - totalClient - totalCompany;
+  document.getElementById("custody-total-collect").textContent = fmt(totalCollect);
+  document.getElementById("custody-total-client").textContent = fmt(totalClient);
+  document.getElementById("custody-total-company").textContent = fmt(totalCompany);
+  document.getElementById("custody-balance").textContent = fmt(balance);
+  document.getElementById("custody-balance-sub").textContent =
+    balance===0 ? "已結清 🎉 目前沒有未撥出的款項" : `尚有 $${fmt(balance)} 還沒撥出`;
+
+  const listEl = document.getElementById("custody-list");
+  const sorted = [...custodyRecords].sort((a,b)=> (b.date+b.id).localeCompare(a.date+a.id));
+  if(sorted.length===0){
+    listEl.innerHTML = `<div class="empty-state"><span class="em-icon">🗂️</span>還沒有代管紀錄，點上方按鈕新增第一筆吧</div>`;
+    return;
+  }
+  listEl.innerHTML = sorted.map(r=>{
+    const meta = CUSTODY_META[r.type] || CUSTODY_META.collect;
+    return `<div class="tx-row ${meta.cls}" data-id="${r.id}">
+      <div class="tx-icon">${meta.icon}</div>
+      <div class="tx-info">
+        <div class="tx-cat">${meta.label}</div>
+        <div class="tx-meta">${r.date}${r.note ? " · "+escapeHtml(r.note) : ""}</div>
+      </div>
+      <div class="tx-amount">${meta.sign}$${fmt(r.amount)}</div>
+      <button class="tx-delete" data-del="${r.id}">✕</button>
+    </div>`;
+  }).join("");
+  listEl.querySelectorAll(".tx-row").forEach(row=>{
+    row.addEventListener("click", (e)=>{
+      if(e.target.closest("[data-del]")) return;
+      const rec = custodyRecords.find(r=>r.id===row.dataset.id);
+      if(rec) openCustodyModal("edit", rec);
+    });
+  });
+  listEl.querySelectorAll("[data-del]").forEach(btn=>{
+    btn.addEventListener("click", (e)=>{
+      e.stopPropagation();
+      if(!confirm("確定要刪除這筆代管紀錄嗎？")) return;
+      custodyRecords = custodyRecords.filter(r=>r.id!==btn.dataset.del);
+      saveCustody();
+      toast("已刪除紀錄");
+      renderCustody();
+    });
+  });
+}
+
+/* ---------------- SAVINGS GOAL ---------------- */
+const goalSetupOverlay = document.getElementById("goal-setup-modal-overlay");
+const goalSetupTitle = document.getElementById("goal-setup-title");
+const goalSetupForm = document.getElementById("goal-setup-form");
+const goalNameInput = document.getElementById("goal-name-input");
+const goalTargetInput = document.getElementById("goal-target-input");
+const goalSetupDeleteBtn = document.getElementById("goal-setup-delete");
+
+function openGoalSetup(){
+  goalSetupForm.reset();
+  if(goal){
+    goalSetupTitle.textContent = "編輯目標";
+    goalNameInput.value = goal.name;
+    goalTargetInput.value = goal.target;
+    goalSetupDeleteBtn.classList.remove("hidden");
+  }else{
+    goalSetupTitle.textContent = "設定存錢／還款目標";
+    goalSetupDeleteBtn.classList.add("hidden");
+  }
+  goalSetupOverlay.classList.remove("hidden");
+}
+function closeGoalSetup(){ goalSetupOverlay.classList.add("hidden"); }
+document.getElementById("goal-setup-cancel").addEventListener("click", closeGoalSetup);
+goalSetupOverlay.addEventListener("click", (e)=>{ if(e.target===goalSetupOverlay) closeGoalSetup(); });
+
+goalSetupForm.addEventListener("submit", function(e){
+  e.preventDefault();
+  const target = safeCalc(goalTargetInput.value);
+  const name = goalNameInput.value.trim();
+  if(!name){ toast("請輸入目標名稱"); return; }
+  if(!target || target<=0){ toast("請輸入正確的目標金額"); return; }
+  if(goal){
+    goal.name = name;
+    goal.target = target;
+  }else{
+    goal = { name, target, history: [] };
+  }
+  saveGoal();
+  closeGoalSetup();
+  toast("已儲存目標");
+  renderHome();
+});
+
+goalSetupDeleteBtn.addEventListener("click", function(){
+  if(!confirm("確定要刪除這個目標嗎？存提紀錄也會一併清除，此動作無法復原。")) return;
+  goal = null;
+  saveGoal();
+  closeGoalSetup();
+  toast("已刪除目標");
+  renderHome();
+});
+
+/* 存入／提領 */
+const goalTxOverlay = document.getElementById("goal-tx-modal-overlay");
+const goalTxTitle = document.getElementById("goal-tx-title");
+const goalTxForm = document.getElementById("goal-tx-form");
+const goalTxIdInput = document.getElementById("goal-tx-id");
+const goalTxTypeInput = document.getElementById("goal-tx-type");
+const goalTxAmountInput = document.getElementById("goal-tx-amount");
+const goalTxDateInput = document.getElementById("goal-tx-date");
+const goalTxNoteInput = document.getElementById("goal-tx-note");
+const goalTxDeleteBtn = document.getElementById("goal-tx-delete");
+
+function openGoalTx(type, rec){
+  goalTxForm.reset();
+  if(rec){
+    goalTxTitle.textContent = rec.type==="deposit" ? "編輯存入紀錄" : "編輯提領紀錄";
+    goalTxIdInput.value = rec.id;
+    goalTxTypeInput.value = rec.type;
+    goalTxAmountInput.value = rec.amount;
+    goalTxDateInput.value = rec.date;
+    goalTxNoteInput.value = rec.note || "";
+    goalTxDeleteBtn.classList.remove("hidden");
+  }else{
+    goalTxTitle.textContent = type==="withdraw" ? "從目標提領" : "存入目標";
+    goalTxIdInput.value = "";
+    goalTxTypeInput.value = type;
+    goalTxDateInput.value = todayStr();
+    goalTxDeleteBtn.classList.add("hidden");
+  }
+  goalTxOverlay.classList.remove("hidden");
+}
+function closeGoalTx(){ goalTxOverlay.classList.add("hidden"); }
+document.getElementById("goal-tx-cancel").addEventListener("click", closeGoalTx);
+goalTxOverlay.addEventListener("click", (e)=>{ if(e.target===goalTxOverlay) closeGoalTx(); });
+
+goalTxForm.addEventListener("submit", function(e){
+  e.preventDefault();
+  if(!goal) return;
+  const amt = safeCalc(goalTxAmountInput.value);
+  if(!amt || amt<=0){ toast("請輸入正確金額"); return; }
+  const data = {
+    id: goalTxIdInput.value || uid(),
+    type: goalTxTypeInput.value,
+    amount: amt,
+    date: goalTxDateInput.value || todayStr(),
+    note: goalTxNoteInput.value.trim()
+  };
+  const idx = goal.history.findIndex(h=>h.id===data.id);
+  if(idx>=0) goal.history[idx] = data; else goal.history.push(data);
+  saveGoal();
+  closeGoalTx();
+  toast(idx>=0 ? "已更新紀錄" : "已更新目標");
+  renderHome();
+});
+
+goalTxDeleteBtn.addEventListener("click", function(){
+  if(!goal || !goalTxIdInput.value) return;
+  if(!confirm("確定要刪除這筆紀錄嗎？")) return;
+  goal.history = goal.history.filter(h=>h.id!==goalTxIdInput.value);
+  saveGoal();
+  closeGoalTx();
+  toast("已刪除紀錄");
+  renderHome();
+});
+
+function renderSavingsCard(){
+  const el = document.getElementById("savings-goal-section");
+  if(!goal){
+    el.innerHTML = `
+      <div class="empty-state" style="padding:22px 0 16px;">
+        <span class="em-icon">🎯</span>還沒有設定存錢或還款目標
+      </div>
+      <button class="card-add-btn" id="btn-create-goal">＋ 設定目標</button>
+    `;
+    document.getElementById("btn-create-goal").addEventListener("click", openGoalSetup);
+    return;
+  }
+  const saved = goalSavedAmount();
+  const pct = goal.target>0 ? Math.round((saved/goal.target)*100) : 0;
+  const pctClamped = Math.max(0, Math.min(100, pct));
+  const over = pct>=100;
+  const recentHistory = [...goal.history].sort((a,b)=> (b.date+b.id).localeCompare(a.date+a.id)).slice(0,4);
+
+  el.innerHTML = `
+    <div class="goal-card">
+      <div class="goal-card-top">
+        <div class="goal-name">${escapeHtml(goal.name)}</div>
+        <button class="goal-edit-btn" id="btn-edit-goal">✏️</button>
+      </div>
+      <div class="goal-amounts">
+        <span class="goal-saved">$${fmt(saved)}</span>
+        <span class="goal-target">／ 目標 $${fmt(goal.target)}</span>
+      </div>
+      <div class="goal-progress-track"><div class="goal-progress-fill ${over?'over':''}" style="width:${pctClamped}%"></div></div>
+      <div class="goal-progress-text">${over ? "🎉 已達成目標！" : `已完成 ${pct}%`}</div>
+      <div class="goal-btn-row">
+        <button class="goal-btn deposit" id="btn-goal-deposit">＋ 存入</button>
+        <button class="goal-btn withdraw" id="btn-goal-withdraw">－ 提領</button>
+      </div>
+      ${recentHistory.length>0 ? `<div class="goal-history">${recentHistory.map(h=>`
+        <div class="goal-history-row" data-id="${h.id}">
+          <span>${h.date}${h.note ? " · "+escapeHtml(h.note) : ""}</span>
+          <span class="goal-history-amt ${h.type}">${h.type==="deposit"?"+":"－"}$${fmt(h.amount)}</span>
+        </div>
+      `).join("")}</div>` : ""}
+    </div>
+  `;
+  document.getElementById("btn-edit-goal").addEventListener("click", openGoalSetup);
+  document.getElementById("btn-goal-deposit").addEventListener("click", ()=> openGoalTx("deposit"));
+  document.getElementById("btn-goal-withdraw").addEventListener("click", ()=> openGoalTx("withdraw"));
+  el.querySelectorAll(".goal-history-row").forEach(row=>{
+    row.addEventListener("click", ()=>{
+      const rec = goal.history.find(h=>h.id===row.dataset.id);
+      if(rec) openGoalTx(rec.type, rec);
+    });
+  });
+}
+
 /* ---------------- RAS PAGE ---------------- */
 const RAS_QUESTIONS = [
   "今天有什麼方法可以讓我多存下 100 元？",
@@ -1115,7 +1771,7 @@ document.getElementById("btn-backup-close").addEventListener("click", ()=> backu
 backupOverlay.addEventListener("click", (e)=>{ if(e.target===backupOverlay) backupOverlay.classList.add("hidden"); });
 
 document.getElementById("btn-export").addEventListener("click", ()=>{
-  const blob = new Blob([JSON.stringify({exportedAt:new Date().toISOString(), transactions}, null, 2)], {type:"application/json"});
+  const blob = new Blob([JSON.stringify({exportedAt:new Date().toISOString(), transactions, cards, custodyRecords, goal}, null, 2)], {type:"application/json"});
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   const d = new Date();
@@ -1138,9 +1794,15 @@ document.getElementById("import-file").addEventListener("change", function(e){
       const parsed = JSON.parse(evt.target.result);
       const incoming = Array.isArray(parsed) ? parsed : parsed.transactions;
       if(!Array.isArray(incoming)) throw new Error("格式錯誤");
-      if(!confirm(`即將匯入 ${incoming.length} 筆紀錄，這會取代目前所有資料，確定嗎？`)) return;
+      if(!confirm(`即將匯入 ${incoming.length} 筆花費/入帳紀錄（含信用卡、代管與存錢目標資料），這會取代目前所有資料，確定嗎？`)) return;
       transactions = incoming;
+      cards = Array.isArray(parsed.cards) ? parsed.cards : [];
+      custodyRecords = Array.isArray(parsed.custodyRecords) ? parsed.custodyRecords : [];
+      goal = parsed.goal && typeof parsed.goal==="object" ? parsed.goal : null;
       saveData();
+      saveCards();
+      saveCustody();
+      saveGoal();
       toast("匯入完成");
       backupOverlay.classList.add("hidden");
       refreshCurrentPage();
@@ -1154,9 +1816,15 @@ document.getElementById("import-file").addEventListener("change", function(e){
 
 document.getElementById("btn-clear-all").addEventListener("click", ()=>{
   if(!confirm("確定要清除全部資料嗎？此動作無法復原。")) return;
-  if(!confirm("再次確認：真的要刪除所有記帳紀錄嗎？")) return;
+  if(!confirm("再次確認：真的要刪除所有記帳紀錄（含信用卡、代管與存錢目標資料）嗎？")) return;
   transactions = [];
+  cards = [];
+  custodyRecords = [];
+  goal = null;
   saveData();
+  saveCards();
+  saveCustody();
+  saveGoal();
   toast("已清除全部資料");
   backupOverlay.classList.add("hidden");
   refreshCurrentPage();
